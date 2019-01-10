@@ -30,3 +30,13 @@
     transform: rotate(360deg);
   }
 }
+
+.tile {
+  height: 150px;
+  width: 250px;
+  margin: 10px;
+  background: lightblue;
+  float: left;
+  font-size: 11px;
+  text-align: left;
+}
