@@ -5,30 +5,35 @@ import {connect} from 'react-redux'
 
 
 class PostContainer extends Component {
-
+//i dont know if i need a constructor here.
     constructor(props){
         super(props)
-        this.state = {
+        this.state={
             posts: []
         }
     }
 
-    componentDidMount(){
+    
+    componentWillMount(){
         this.props.fetchPosts()
     }
 
-
    render() {
+    console.log('props ', this.props.posts)
+    console.log('state ', this.state)
+
+    let renderPosts = this.state.posts.map((post, index) => {
+        return(
+            <div className="tile" key={post.id} >
+                <h4>{post.title}</h4>
+                <p>{post.body}</p>
+            </div>
+            )       
+        })
+
    return(
         <div>
-            {this.state.posts.map((post) => {
-            return(
-                <div className="tile" key={post.id} >
-                    <h4>{post.title}</h4>
-                    <p>{post.body}</p>
-                </div>
-                )       
-            })}
+            {renderPosts}
         </div>
         )
     }
@@ -36,8 +41,8 @@ class PostContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log(state.posts)
-    return {posts: state.posts}
+    console.log('mapstate to props state', state.posts.posts[0])
+    return {posts: state.posts.posts[0]}
   }
   
   /*const mapDispatchToProps=dispatch=> {

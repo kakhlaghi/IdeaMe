@@ -7,11 +7,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1> Idea ME </h1>
         </header>
-        < PostContainer posts={this.props.posts}/>
+        < PostContainer />
       </div>
     );
   }
