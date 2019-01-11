@@ -11,7 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1> Idea ME </h1>
         </header>
-        < PostContainer />
+        < PostContainer posts={this.props.posts}/>
       </div>
     );
   }
