@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {fetchPosts} from '../actions/postServices.js'
 import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux'
+//import { bindActionCreators } from 'redux'
 
 
 class PostContainer extends Component {
@@ -15,7 +15,6 @@ class PostContainer extends Component {
 
     componentDidMount(){
         this.props.fetchPosts()
-        //this.setState({posts: })
     }
 
 
@@ -49,7 +48,5 @@ const mapStateToProps = (state) => {
         }
     }
   }*/
-
-
 
   export default connect(mapStateToProps, {fetchPosts})(PostContainer);

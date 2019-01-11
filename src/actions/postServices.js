@@ -2,7 +2,7 @@
 
 export function fetchPosts (dispatches) {
     return function(dispatch){
-        dispatch({type: 'FETCH POSTS'})
+        dispatch({type: 'LOAD POSTS'})
         fetch('http://localhost:3001/api/v1/posts.json',
         {
             method: 'GET'
@@ -10,6 +10,8 @@ export function fetchPosts (dispatches) {
         .then(response => response.json())
         .then(postCollection => {
             console.log(postCollection)
+            dispatch({type: 'FETCH POSTS', payload: postCollection})
+
         })
         .catch(error => console.log(error))
     }
