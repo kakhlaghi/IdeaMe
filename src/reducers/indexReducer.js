@@ -3,7 +3,10 @@ import postReducer from './postReducer'
 
 
 const rootReducer = combineReducers({
-    posts: postReducer
+    posts: postReducer,
+    //users: userReducer
+    //postForm: postFormReducer,
+    //loginForm: loginFormReducer
 })
 
 export default rootReducer
