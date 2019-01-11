@@ -1,4 +1,8 @@
 import React, {Component} from 'react'
+import fetchPosts from '../actions/postServices.js'
+import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 
 class PostContainer extends Component {
 
@@ -10,14 +14,14 @@ class PostContainer extends Component {
     }
 
     componentDidMount(){
-
+        this.props.fetchPosts()
     }
 
 
    render() {
    return(
         <div>
-            {this.state.ideas.map((idea) => {
+            {this.state.posts.map((post) => {
             return(
                 <div className="tile" key={post.id} >
                 <h4>{post.title}</h4>
@@ -30,6 +34,16 @@ class PostContainer extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    console.log('hit mapstatetoprops')
+    return {posts: state.posts}
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    console.log('mapdispatch to props')
+    return {actions: bindActionCreators(fetchPosts, dispatch)}
+  }
 
 
-export default PostContainer
+
+export default PostContainer = connect( mapStateToProps, {fetchPosts})

@@ -1,6 +1,6 @@
 
 
-export function fetchPosts (dispatches) {
+export default function fetchPosts (dispatches) {
     return function(dispatch){
         dispatch({type: 'LOADING POSTS'})
         fetch('http://localhost:3001/api/v1/posts.json')
