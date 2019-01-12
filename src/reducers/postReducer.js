@@ -5,7 +5,8 @@ export default function postReducer (state = {loading: false, posts: [], errors:
         case 'FETCH POSTS':
             return {
                 ...state,
-                posts: [...state.posts, action.payload]
+                posts: [action.payload],
+                loading: false
             }
 
         default:

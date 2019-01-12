@@ -1,38 +1,38 @@
 import React, {Component} from 'react'
 import {fetchPosts} from '../actions/postServices.js'
 import {connect} from 'react-redux'
+import Post from '../components/Post'
 //import { bindActionCreators } from 'redux'
 
 
 class PostContainer extends Component {
 //i dont know if i need a constructor here.
-    constructor(props){
-        super(props)
-        this.state={
-            posts: []
-        }
+constructor(props){
+    super(props)
+    this.state={
+        posts: []
     }
-
+}
     
-    componentWillMount(){
+    componentDidMount(){
         this.props.fetchPosts()
+    
     }
 
    render() {
-    console.log('props ', this.props.posts)
-    console.log('state ', this.state)
-
-    let renderPosts = this.state.posts.map((post, index) => {
-        return(
-            <div className="tile" key={post.id} >
-                <h4>{post.title}</h4>
-                <p>{post.body}</p>
-            </div>
-            )       
+        const renderPosts = this.props.posts.posts.map((array) => {
+         return array.map((post, index) => {
+            return(
+                <Post post={post} key={post.id}/>
+                )    
+            })   
         })
+    
 
    return(
         <div>
+            <button className='newPostButton'>New Post +</button>
+
             {renderPosts}
         </div>
         )
@@ -41,8 +41,7 @@ class PostContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log('mapstate to props state', state.posts.posts[0])
-    return {posts: state.posts.posts[0]}
+    return {posts: state.posts}
   }
   
   /*const mapDispatchToProps=dispatch=> {

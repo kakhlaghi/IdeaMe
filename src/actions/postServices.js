@@ -9,7 +9,6 @@ export function fetchPosts (dispatches) {
         } )
         .then(response => response.json())
         .then(postCollection => {
-            console.log('postCollection ', postCollection)
             dispatch({type: 'FETCH POSTS', payload: postCollection})
 
         })
