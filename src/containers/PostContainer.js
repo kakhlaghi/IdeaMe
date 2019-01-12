@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {fetchPosts} from '../actions/postServices.js'
 import {connect} from 'react-redux'
 import Post from '../components/Post'
+import update from 'immutability-helper'
+
 //import { bindActionCreators } from 'redux'
 
 
@@ -13,7 +15,24 @@ constructor(props){
         posts: []
     }
 }
-    
+
+//move addNewPost to actions/postServices
+    addNewPost = () => {
+        fetch('http://localhost:3001/api/v1/posts',
+        {
+            method: 'POST',
+            mode: "cors",
+            body: {post: { title: '', body: ''}}
+        })
+        .then(response =>{
+            const posts = update(this.state.posts, {
+                $splice: [[0, 0, response.data]]
+              })
+            this.setState({posts: posts})
+        })
+        .catch(error => console.log(error))
+    }
+
     componentDidMount(){
         this.props.fetchPosts()
     
@@ -31,7 +50,7 @@ constructor(props){
 
    return(
         <div>
-            <button className='newPostButton'>New Post +</button>
+            <button className='newPostButton' onClick={this.addNewPost}>New Post +</button>
 
             {renderPosts}
         </div>
