@@ -37,6 +37,14 @@ constructor(props){
         })
         .catch(error => console.log(error))
     }
+//update move to actions and mapDispatchToProps
+    updatePost = (post) => {
+        const postIndex = this.state.posts.findIndex(x => x.id === post.id)
+        const posts = update(this.state.posts, {
+          [postIndex]: { $set: post }
+        })
+        this.setState({posts: posts})
+      }
 
     componentDidMount(){
         this.props.fetchPosts()
@@ -47,7 +55,7 @@ constructor(props){
         const renderPosts = this.props.posts.posts.map((array) => {
          return array.map((post, index) => {
             if(this.props.editingPostId===post.id){
-                return(<PostForm post={post} key={post.id} />)
+                return(<PostForm post={post} key={post.id} updatePost={this.updatePost}/>)
             }else{    
                 return(<Post post={post} key={post.id}/>)    
             }   
