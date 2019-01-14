@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 
 
 export default class PostForm extends Component {
@@ -11,6 +12,7 @@ export default class PostForm extends Component {
     }
 
     handleInput = (e) => {
+        debugger
         this.setState({[e.target.name]: e.target.value})
       }
 
@@ -19,20 +21,19 @@ export default class PostForm extends Component {
             title: this.state.title,
             body: this.state.body
         }
-
         fetch(`http://localhost:3001/api/v1/posts/${this.props.post.id}`,{
             method: 'PUT',
             mode: "cors",
-            body: {post: post}
+            body: JSON.stringify({post: post})
         })
         .then(response => {
             console.log(response)
+            debugger
             this.props.updatePost(response.data)
           })
         .catch(error => console.log(error))
     }
     
-
 
     render(){
         return(

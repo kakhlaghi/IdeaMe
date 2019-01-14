@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Post from '../components/Post'
 import PostForm from '../components/PostForm'
 import update from 'immutability-helper'
+import axios from 'axios'
 
 //import { bindActionCreators } from 'redux'
 
@@ -19,14 +20,20 @@ constructor(props){
 }
 
 //move addNewPost to actions/postServices
-    addNewPost = () => {
+  /*  addNewPost = () => {
+        const data = {post: { title: '', body: ''}}
         fetch('http://localhost:3001/api/v1/posts',
         {
             method: 'POST',
-            mode: "cors",
-            body: {post: { title: '', body: ''}}
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify(data)
         })
         .then(response =>{
+            debugger
             const posts = update(this.state.posts, {
                 $splice: [[0, 0, response.data]]
               })
@@ -36,9 +43,37 @@ constructor(props){
             })
         })
         .catch(error => console.log(error))
+    }*/
+
+    addNewPost = () => {
+        axios.post(
+          'http://localhost:3001/api/v1/posts',
+          { post:
+            {
+              title: '',
+              body: ''
+            }
+          }
+        )
+        .then(response => {
+            const posts = update(this.state.posts, {
+                $splice: [[0, 0, response.data]]
+              })
+            this.setState({
+                posts: posts,
+                editingPostId: response.data.id
+            })
+            debugger
+        })
+        .catch(error => console.log(error))
     }
+
+
+
+
 //update move to actions and mapDispatchToProps
     updatePost = (post) => {
+        debugger
         const postIndex = this.state.posts.findIndex(x => x.id === post.id)
         const posts = update(this.state.posts, {
           [postIndex]: { $set: post }
@@ -48,7 +83,6 @@ constructor(props){
 
     componentDidMount(){
         this.props.fetchPosts()
-    
     }
 
    render() {
@@ -61,12 +95,9 @@ constructor(props){
             }   
         })
     })
-    
-
    return(
         <div>
             <button className='newPostButton' onClick={this.addNewPost}>New Post +</button>
-
             {renderPosts}
         </div>
         )
@@ -75,6 +106,7 @@ constructor(props){
 
 
 const mapStateToProps = (state) => {
+    debugger
     return {
         posts: state.posts,
         editingPostId: state.editingPostId

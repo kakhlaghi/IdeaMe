@@ -8,8 +8,8 @@ const Header = () => {
     return(
         <div>
             navButtons = <div>
-                <Link to="/signup"><Button>Sign Up</Button></Link>
-                <Link to="/signin"><Button>Sign In</Button></Link>
+                <Link to="/about">About</Link>
+                <Link to="/signin"></Link>
             </div>
         </div>    
     )

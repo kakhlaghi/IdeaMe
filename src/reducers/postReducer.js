@@ -1,4 +1,4 @@
-export default function postReducer (state = {loading: false, posts: [], errors: null}, action){
+export default function postReducer (state = {loading: false, posts: [], editingPostId: null, errors: null}, action){
     switch(action.type){
         case 'LOADING POSTS':
             return Object.assign({}, state, {loading: true})
