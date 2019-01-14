@@ -10,7 +10,6 @@ import {Provider} from 'react-redux'
 import rootReducer from './reducers/indexReducer'
 import {BrowserRouter} from 'react-router-dom'
 
-
 const store = createStore(rootReducer, applyMiddleware(thunk));
 window.store = store;
 

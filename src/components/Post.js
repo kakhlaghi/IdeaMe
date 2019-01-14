@@ -1,4 +1,5 @@
 import React from 'react'
+import PostForm from './PostForm'
 
 const Post = ({post}) => {
     return (

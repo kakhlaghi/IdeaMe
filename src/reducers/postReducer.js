@@ -8,7 +8,17 @@ export default function postReducer (state = {loading: false, posts: [], editing
                 posts: [action.payload],
                 loading: false
             }
-
+        case 'ADD POST':
+            return{
+                ...state,
+                posts: [action.payload, ...state.posts],
+                loading: false
+            }
+        case 'UPDATE POST':
+            return{
+                ...state,
+                posts: []
+            }    
         default:
             return state
     }

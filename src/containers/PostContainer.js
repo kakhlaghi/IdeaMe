@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {fetchPosts} from '../actions/postServices.js'
+import {fetchPosts, addNewPost} from '../actions/postServices.js'
 import {connect} from 'react-redux'
 import Post from '../components/Post'
 import PostForm from '../components/PostForm'
@@ -14,7 +14,6 @@ class PostContainer extends Component {
 constructor(props){
     super(props)
     this.state={
-        posts: [],
         editingPostId: null
     }
 }
@@ -44,7 +43,7 @@ constructor(props){
         })
         .catch(error => console.log(error))
     }*/
-
+/*
     addNewPost = () => {
         axios.post(
           'http://localhost:3001/api/v1/posts',
@@ -56,38 +55,43 @@ constructor(props){
           }
         )
         .then(response => {
-            const posts = update(this.state.posts, {
-                $splice: [[0, 0, response.data]]
-              })
+            //ASYNC isnt working because of update from immutability helper
+            
+            //could use $splice: [[0,0,response.data]]
+            //const posts = update(this.state.posts, {$push: [[response.data]]})
+              //const posts = this.state.posts.push(response.data)
+            console.log('posts', posts)
+            //setState should update auto but doesnt?
             this.setState({
                 posts: posts,
                 editingPostId: response.data.id
-            })
-            debugger
+            }, () =>  {console.log(this.state.posts, ' state posts')})
         })
         .catch(error => console.log(error))
-    }
-
-
-
+    }*/
 
 //update move to actions and mapDispatchToProps
-    updatePost = (post) => {
+    /*updatePost = (post) => {
         debugger
         const postIndex = this.state.posts.findIndex(x => x.id === post.id)
         const posts = update(this.state.posts, {
           [postIndex]: { $set: post }
         })
         this.setState({posts: posts})
-      }
+      }*/
 
     componentDidMount(){
         this.props.fetchPosts()
     }
 
+    handleOnClick = (event) =>{
+        this.props.addNewPost()
+    }
+
    render() {
+       //getting it from the store! not the state!
         const renderPosts = this.props.posts.posts.map((array) => {
-         return array.map((post, index) => {
+           return array.map((post, index) => {  
             if(this.props.editingPostId===post.id){
                 return(<PostForm post={post} key={post.id} updatePost={this.updatePost}/>)
             }else{    
@@ -97,7 +101,7 @@ constructor(props){
     })
    return(
         <div>
-            <button className='newPostButton' onClick={this.addNewPost}>New Post +</button>
+            <button className='newPostButton' onClick={this.handleOnClick}>New Post +</button>
             {renderPosts}
         </div>
         )
@@ -106,7 +110,6 @@ constructor(props){
 
 
 const mapStateToProps = (state) => {
-    debugger
     return {
         posts: state.posts,
         editingPostId: state.editingPostId
@@ -122,4 +125,4 @@ const mapStateToProps = (state) => {
     }
   }*/
 
-  export default connect(mapStateToProps, {fetchPosts})(PostContainer);
+  export default connect(mapStateToProps, {fetchPosts, addNewPost})(PostContainer);
