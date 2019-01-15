@@ -13,8 +13,8 @@ export default class PostForm extends Component {
 
     handleOnChange(event){
         this.setState({
-            title: event.target.value,
-            body: event.target.value
+            title: event.target.title,
+            body: event.target.body
         });
     }
 
@@ -37,10 +37,10 @@ export default class PostForm extends Component {
             <form onSubmit={(event) => this.handleOnSubmit(event)} >
                 <input className='input' type="text"
                     name="title" placeholder='Enter a Title'
-                    value={this.state.title} onChange={(event) => this.handleOnChange(event)} />
+                    title={this.state.title} onChange={(event) => this.handleOnChange(event)} />
                 <textarea className='input' name="body"
                     placeholder='Say Something...' 
-                    value={this.state.body} onChange={(event) => this.handleOnChange(event)} >
+                    body={this.state.body} onChange={(event) => this.handleOnChange(event)} >
                 </textarea>
                 <input type="submit" />
             </form>
@@ -49,22 +49,9 @@ export default class PostForm extends Component {
     }
 }
 
+/*
+{
+    [post][title]
+}
+*/
 
-
- /*handleBlur = () => {
-        const post = {
-            title: this.state.title,
-            body: this.state.body
-        }
-        //move to action (ALL FETCH REQUESTS)
-        fetch(`http://localhost:3001/api/v1/posts/${this.props.post.id}`,{
-            method: 'PUT',
-            mode: "cors",
-            body: JSON.stringify({post: post})
-        })
-        .then(response => {
-            console.log(response)
-            this.props.updatePost(response.data)
-          })
-        .catch(error => console.log(error))
-    }*/

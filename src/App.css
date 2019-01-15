@@ -9,8 +9,8 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  max-height: 200vh;
+  min-height: 50vh;
+  max-height: 50vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,8 +50,8 @@
   float: center;
   font-size: 18px;
   cursor: pointer;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
   padding:10px;
 }
 

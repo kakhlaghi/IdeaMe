@@ -18,8 +18,10 @@ export function fetchPosts (dispatches) {
 export function addNewPost (dispatches){
     return function(dispatch){
         const post = {
-            title: this.state.title,
-            body: this.state.body
+            post: {
+                title: this.state.title,
+                body: this.state.body
+            }
         }
         fetch('http://localhost:3001/api/v1/posts',
         {
@@ -64,6 +66,4 @@ export function updatePost(dispatches){
 
     TYPE: ADD POST
     dispatch payload: response
-
-
 */

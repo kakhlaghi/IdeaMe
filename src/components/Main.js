@@ -13,7 +13,7 @@ const Main = () => {
         <Route exact path='/' component={PostContainer} />
         <Route path='/about' component={About} />
         <Route path='/newpost' component={PostForm} />
-        <Route component={NoMatch} />
+        <Route component={NoMatch} /> 
     </Switch>
     </div>
    )
