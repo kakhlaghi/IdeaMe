@@ -14,7 +14,7 @@ class PostContainer extends Component {
 constructor(props){
     super(props)
     this.state={
-        editingPostId: null
+        viewForm: false
     }
 }
 
@@ -85,23 +85,21 @@ constructor(props){
     }
 
     handleOnClick = (event) =>{
-        this.props.addNewPost()
+        this.setState({
+            viewForm: true 
+        })
     }
 
    render() {
        //getting it from the store! not the state!
         const renderPosts = this.props.posts.posts.map((array) => {
            return array.map((post, index) => {  
-            if(this.props.editingPostId===post.id){
-                return(<PostForm post={post} key={post.id} updatePost={this.updatePost}/>)
-            }else{    
                 return(<Post post={post} key={post.id}/>)    
-            }   
         })
     })
    return(
         <div>
-            <button className='newPostButton' onClick={this.handleOnClick}>New Post +</button>
+            
             {renderPosts}
         </div>
         )

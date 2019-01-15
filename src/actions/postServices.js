@@ -17,7 +17,10 @@ export function fetchPosts (dispatches) {
 
 export function addNewPost (dispatches){
     return function(dispatch){
-        const data = {post: { title: '', body: ''}}
+        const post = {
+            title: this.state.title,
+            body: this.state.body
+        }
         fetch('http://localhost:3001/api/v1/posts',
         {
             method: 'POST',
@@ -26,7 +29,7 @@ export function addNewPost (dispatches){
                 "Content-Type": "application/json",
                 // "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(post)
         })
         .then(response => response.json())
         .then(newPost =>{ 

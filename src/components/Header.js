@@ -1,16 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import About from './About'
+
 
 
 const Header = () => {
     //const user = JSON.parse(localStorage.getItem('user'))
     return(
         <div>
-            navButtons = <div>
-                <Link to="/about">About</Link>
-                <Link to="/newpost"></Link>
+            <div >
+                <Link to="/"><button className='newPostButton' >Home</button></Link>
+                <Link to="/about"><button className='newPostButton'>About</button></Link>
+                <Link to="/newpost"><button className='newPostButton'>New Post +</button></Link>
             </div>
         </div>    
     )
