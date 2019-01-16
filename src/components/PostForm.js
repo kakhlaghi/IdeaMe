@@ -1,21 +1,25 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {addNewPost} from '../actions/postServices.js'
+import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom';
 
 
-export default class PostForm extends Component {
+class PostForm extends Component {
     constructor(props){
         super(props)
         this.state={
             title: '', //this.props.post.title
-             body: '' //this.props.post.body
+            body: '', //this.props.post.body
+            redirectToHomePage: false
         }
     }
 
     handleOnChange(event){
-        this.setState({
-            title: event.target.title,
-            body: event.target.body
-        });
+        const field = event.target.name
+        let state = this.state
+        state[field] = event.target.value
+        this.setState(state)
     }
 
     handleOnSubmit(event){
@@ -23,15 +27,21 @@ export default class PostForm extends Component {
         this.props.addNewPost(this.state);
         this.setState({
             title: '',
-            body: ''
+            body: '',
+            redirectToHomePage: true
         });
     }
 
-    handleInput = (e) => {
+    /*handleInput = (e) => {
         this.setState({[e.target.name]: e.target.value})
-      }
+      }*/
 
     render(){
+        if (this.state.redirectToHomePage) {
+            return (
+            <Redirect to="/" />
+            )
+          }
         return(
             <div className="tile">
             <form onSubmit={(event) => this.handleOnSubmit(event)} >
@@ -48,6 +58,16 @@ export default class PostForm extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts,
+    }
+  }
+
+export default connect(mapStateToProps, { addNewPost })(PostForm);
+
+
 
 /*
 {

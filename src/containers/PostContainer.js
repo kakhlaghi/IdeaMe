@@ -14,7 +14,7 @@ class PostContainer extends Component {
 constructor(props){
     super(props)
     this.state={
-        viewForm: false
+
     }
 }
 
@@ -38,17 +38,16 @@ constructor(props){
    return(
         <div>
             {renderPosts}
-            <PostForm addNewPost={this.props.addNewPost} />
         </div>
         )
     }
 }
+//<PostForm addNewPost={this.props.addNewPost} />
 
 
 const mapStateToProps = (state) => {
     return {
         posts: state.posts,
-        editingPostId: state.editingPostId
     }
   }
 

@@ -19,8 +19,8 @@ export function addNewPost (dispatches){
     return function(dispatch){
         const post = {
             post: {
-                title: this.state.title,
-                body: this.state.body
+                title: dispatches.title,
+                body: dispatches.body
             }
         }
         fetch('http://localhost:3001/api/v1/posts',
