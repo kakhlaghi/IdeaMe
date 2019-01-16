@@ -74,3 +74,15 @@ textarea {
   height: 90px;
   font-size: 11px;
 }
+
+form {
+  height: 250px;
+  width: 250px;
+  margin: 10px;
+  background: skyblue;
+  align-items: center;
+  margin-left: 42%;
+  font-size: auto;
+  text-align: left;
+  padding: 15px;
+}

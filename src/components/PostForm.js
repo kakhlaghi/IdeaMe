@@ -43,7 +43,7 @@ class PostForm extends Component {
             )
           }
         return(
-            <div className="tile">
+            <div className="form">
             <form onSubmit={(event) => this.handleOnSubmit(event)} >
                 <input className='input' type="text"
                     name="title" placeholder='Enter a Title'
