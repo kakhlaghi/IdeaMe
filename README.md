@@ -1,3 +1,9 @@
+This is currently a work in progress. Run npm install followed by npm start to run locally.
+
+Back-end API: https://github.com/kakhlaghi/IdeaMe-api While running this React app, start the Rails API with rails server -p 3001.
+
+Recommended steps for running both: Clone this repo and the api. Run npm install for the client, and bundle install for the api. Run rake start for both. Then client runs on 3000 and the api on 3001.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
