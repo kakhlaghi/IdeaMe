@@ -24,7 +24,9 @@ class PostForm extends Component {
 
     handleOnSubmit(event){
         event.preventDefault();
+        console.log('A')
         this.props.addNewPost(this.state);
+        console.log('B')
         this.setState({
             title: '',
             body: '',

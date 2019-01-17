@@ -14,9 +14,9 @@ class PostContainer extends Component {
     constructor(props){
         super(props)
         this.state={
-
+            
+        }
     }
-}
 
     componentDidMount(){
         this.props.fetchPosts()
@@ -27,6 +27,14 @@ class PostContainer extends Component {
             viewForm: true 
         })
     }
+
+    /*addVotes(){
+        this.setState({
+            votes: 
+        })
+    }
+
+    */
 
    render() {
        //getting it from the store! not the state!

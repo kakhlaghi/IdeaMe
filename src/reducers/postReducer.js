@@ -11,7 +11,7 @@ export default function postReducer (state = {loading: false, posts: [], editing
         case 'ADD POST':
             return{
                 ...state,
-                posts: [action.payload, ...state.posts],
+                //posts: [action.payload, ...state.posts],
                 loading: false
             }
         case 'UPDATE POST':
@@ -21,7 +21,7 @@ export default function postReducer (state = {loading: false, posts: [], editing
             }    
         case 'DELETE POST':
             return{
-                
+
             }
 
         default:

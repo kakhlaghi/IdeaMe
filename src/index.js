@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import thunk from 'redux-thunk'
 import {createStore, applyMiddleware} from 'redux'
+//add redux-toolkit
 import {Provider} from 'react-redux'
 import rootReducer from './reducers/indexReducer'
 import {BrowserRouter} from 'react-router-dom'
