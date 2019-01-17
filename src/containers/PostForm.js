@@ -48,7 +48,7 @@ class PostForm extends Component {
                 <input className='input' type="text"
                     name="title" placeholder='Enter a Title'
                     title={this.state.title} onChange={(event) => this.handleOnChange(event)} />
-                <textarea className='input' name="body"
+                <textarea className='textarea' name="body"
                     placeholder='Say Something...' 
                     body={this.state.body} onChange={(event) => this.handleOnChange(event)} >
                 </textarea>

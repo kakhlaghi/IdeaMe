@@ -61,18 +61,20 @@
   background: none;
   outline: none;
   margin-top:10px;
-  width: 140px;
-  font-size: 11px;
+  width: 200px;
+  font-size: 15px;
 }
 
 .input:focus {
   border: solid 1px lightgrey;
 }
 
-textarea {
+.textarea {
   resize: none;
-  height: 90px;
-  font-size: 11px;
+  background: none;
+  height: 200px;
+  width: 200px;
+  font-size: 13px;
 }
 
 form {

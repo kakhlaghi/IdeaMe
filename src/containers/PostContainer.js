@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {fetchPosts, addNewPost} from '../actions/postServices.js'
 import {connect} from 'react-redux'
 import Post from '../components/Post'
-import PostForm from './containers/PostForm'
+import PostForm from './PostForm'
 import update from 'immutability-helper'
 import axios from 'axios'
 

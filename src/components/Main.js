@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import PostContainer from '../containers/PostContainer'
-import PostForm from '../components/PostForm'
+import PostForm from '../containers/PostForm'
 import About from './About'
 import NoMatch from './NoMatch'
 
