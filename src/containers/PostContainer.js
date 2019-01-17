@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {fetchPosts, addNewPost} from '../actions/postServices.js'
 import {connect} from 'react-redux'
 import Post from '../components/Post'
-import PostForm from '../components/PostForm'
+import PostForm from './containers/PostForm'
 import update from 'immutability-helper'
 import axios from 'axios'
 
@@ -11,9 +11,9 @@ import axios from 'axios'
 
 class PostContainer extends Component {
 //i dont know if i need a constructor here.
-constructor(props){
-    super(props)
-    this.state={
+    constructor(props){
+        super(props)
+        this.state={
 
     }
 }

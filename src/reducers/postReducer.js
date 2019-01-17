@@ -19,6 +19,11 @@ export default function postReducer (state = {loading: false, posts: [], editing
                 ...state,
                 posts: []
             }    
+        case 'DELETE POST':
+            return{
+                
+            }
+
         default:
             return state
     }

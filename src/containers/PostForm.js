@@ -66,12 +66,3 @@ const mapStateToProps = (state) => {
   }
 
 export default connect(mapStateToProps, { addNewPost })(PostForm);
-
-
-
-/*
-{
-    [post][title]
-}
-*/
-
