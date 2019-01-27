@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {votePost} from '../actions/postServices'
 //import PostForm from './PostForm'
 
 //class Post = ({post}) => {
@@ -11,9 +12,10 @@ class Post extends Component {
     }
 
     addVotes = () => {
-        this.setState({
+        /*this.setState({
             votes: this.state.votes + 1
-        })
+        })*/
+        event.preventDefault
     }
 
 
@@ -29,6 +31,15 @@ class Post extends Component {
     }
 } 
 
-export default Post
+
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts,
+    }
+  }
+ 
+export default connect(mapStateToProps, {votePost})(Post);
+  
+//export default Post
 // elixirschool
 //warrior.js

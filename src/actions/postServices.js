@@ -44,6 +44,21 @@ export function addNewPost (dispatches){
         console.log('E')
 }
 
+export function votePost(dispatches){
+    return function(dispatch){
+        //vote update
+        fetch(`http://localhost:3001/api/v1/posts/${this.props.post.id}`,{
+            method:'PUT',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify(post)
+        })
+    }
+}
+
 export function updatePost(dispatches){
     return function(dispatch){
         const post = {
