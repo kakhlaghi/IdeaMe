@@ -43,7 +43,13 @@ export function addNewPost (dispatches){
 
 export function votePost(dispatches){
     return function(dispatch){
+        const vote = {
+            post:{
+                vote: dispatches.vote + 1
+            }
+        }
         //vote update
+        debugger
         fetch(`http://localhost:3001/api/v1/posts/${this.props.post.id}`,{
             method:'PUT',
             mode: 'cors',
@@ -51,8 +57,13 @@ export function votePost(dispatches){
                 "Content-Type": "application/json",
                 // "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: JSON.stringify(post)
+            body: JSON.stringify(vote)
         })
+        .then(response => response.json())
+        .then(addVote =>{
+            dispatch({type: 'CHANGE VOTE', payload: [addVote]})
+        })
+        .catch(error => console.log(error))
     }
 }
 
