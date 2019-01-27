@@ -16,7 +16,6 @@ export function fetchPosts (dispatches) {
 } 
 
 export function addNewPost (dispatches){
-    console.log('C')
     return function(dispatch){
         const post = {
             post: {
@@ -36,12 +35,10 @@ export function addNewPost (dispatches){
         })
         .then(response => response.json())
         .then(newPost =>{ 
-            console.log('D')
             dispatch({type: 'ADD POST', payload: [newPost]})
         })
         .catch(error => console.log(error))
     }  
-        console.log('E')
 }
 
 export function votePost(dispatches){

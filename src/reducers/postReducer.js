@@ -14,6 +14,11 @@ export default function postReducer (state = {loading: false, posts: [], editing
                 //posts: [action.payload, ...state.posts],
                 loading: false
             }
+        case 'VOTE CHANGE':
+            return{
+                ...state,
+                posts: []
+            }
         case 'UPDATE POST':
             return{
                 ...state,

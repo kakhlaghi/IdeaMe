@@ -11,11 +11,12 @@ class Post extends Component {
         }
     }
 
-    addVotes = () => {
+    addVotes = (event) => {
         /*this.setState({
             votes: this.state.votes + 1
         })*/
-        event.preventDefault
+        event.preventDefault();
+        this.props.votePost(this.state)
     }
 
 
