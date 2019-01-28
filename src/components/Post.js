@@ -15,7 +15,7 @@ class Post extends Component {
 
     handleOnClick = (event) => {
         this.setState({
-            votes: votes + 1
+            votes: this.props.votes + 1
         })
     }
 
