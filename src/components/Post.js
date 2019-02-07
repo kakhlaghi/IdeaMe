@@ -36,7 +36,7 @@ class Post extends Component {
         <div className="tile" key={this.props.post.id} >
             <h4>{this.props.post.title}</h4>
             <p>{this.props.post.body}</p>
-            <button onClick={this.handleOnClick}>Vote Up!</button>
+            <button onClick={this.addVotes}>Vote Up!</button>
             <p>{this.state.votes}</p>
         </div>
         )

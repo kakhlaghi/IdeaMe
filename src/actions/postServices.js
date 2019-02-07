@@ -45,7 +45,7 @@ export function votePost(dispatches){
     return function(dispatch){
         const vote = {
             post:{
-                vote: dispatches.vote + 1
+                vote: dispatches.votes + 1
             }
         }
         //vote update
