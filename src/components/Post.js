@@ -9,12 +9,14 @@ class Post extends Component {
     constructor(props){
         super(props)
         this.state={
-            votes: 0
+            id: this.props.post.id,
+            votes: this.props.post.votes
         }
     }
 
     handleOnClick = (event) => {
         this.setState({
+            id: this.props.post.id,
             votes: this.props.votes + 1
         })
     }
@@ -25,19 +27,19 @@ class Post extends Component {
         })*/
         event.preventDefault();
         this.props.votePost(this.state)
-        this.setState({
+        /*this.setState({
             votes: 0
-        })
+        })*/
     }
 
 
     render(){
     return (
-        <div className="tile" key={this.props.post.id} >
+        <div className="tile" id={this.props.post.id} >
             <h4>{this.props.post.title}</h4>
             <p>{this.props.post.body}</p>
             <button onClick={this.addVotes}>Vote Up!</button>
-            <p>{this.state.votes}</p>
+            <p>{this.props.post.votes}</p>
         </div>
         )
     }

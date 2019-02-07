@@ -45,12 +45,11 @@ export function votePost(dispatches){
     return function(dispatch){
         const vote = {
             post:{
-                vote: dispatches.votes + 1
+                votes: dispatches.votes + 1
             }
         }
         //vote update
-        debugger
-        fetch(`http://localhost:3001/api/v1/posts/${this.props.post.id}`,{
+        fetch(`http://localhost:3001/api/v1/posts/${dispatches.id}`,{
             method:'PUT',
             mode: 'cors',
             headers: {
@@ -60,6 +59,7 @@ export function votePost(dispatches){
             body: JSON.stringify(vote)
         })
         .then(response => response.json())
+        .then(resp => console.log(resp))
         .then(addVote =>{
             dispatch({type: 'CHANGE VOTE', payload: [addVote]})
         })
