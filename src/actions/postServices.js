@@ -45,7 +45,7 @@ export function votePost(dispatches){
     return function(dispatch){
         const vote = {
             post:{
-                votes: dispatches.votes + 1
+                votes: dispatches.votes
             }
         }
         //vote update
@@ -59,7 +59,6 @@ export function votePost(dispatches){
             body: JSON.stringify(vote)
         })
         .then(response => response.json())
-        .then(resp => console.log(resp))
         .then(addVote =>{
             dispatch({type: 'CHANGE VOTE', payload: [addVote]})
         })

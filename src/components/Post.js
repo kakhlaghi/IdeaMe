@@ -14,18 +14,25 @@ class Post extends Component {
         }
     }
 
-    handleOnClick = (event) => {
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.post.votes !== prevProps.post.votes) {
+          this.setState(this.state);
+        }
+      }
+
+    /*handleOnClick(event){
         this.setState({
-            id: this.props.post.id,
-            votes: this.props.votes + 1
+            votes: this.state.votes + 1
         })
-    }
+        this.addVotes(this.state)
+    }*/
 
     addVotes = (event) => {
-        /*this.setState({
-            votes: this.state.votes + 1
-        })*/
         event.preventDefault();
+        this.setState({
+            votes: this.state.votes + 1
+        })
         this.props.votePost(this.state)
         /*this.setState({
             votes: 0
@@ -38,7 +45,7 @@ class Post extends Component {
         <div className="tile" id={this.props.post.id} >
             <h4>{this.props.post.title}</h4>
             <p>{this.props.post.body}</p>
-            <button onClick={this.addVotes}>Vote Up!</button>
+            <button onClick={(event) => this.addVotes(event)}>Vote Up!</button>
             <p>{this.props.post.votes}</p>
         </div>
         )
@@ -48,7 +55,7 @@ class Post extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
+        posts: state.posts
     }
   }
  
