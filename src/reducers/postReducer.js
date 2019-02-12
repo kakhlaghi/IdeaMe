@@ -15,8 +15,16 @@ export default function postReducer (state = {loading: false, posts: [], editing
                 loading: false
             }
         case 'CHANGE VOTE':
+            let newPosts = state.posts[0].map((post) => {
+                if(post.id == action.payload.id){
+                    return action.payload
+                } else {
+                    return post
+                }
+            })
             return{
                 ...state,
+                posts: [newPosts],
                 loading: false
             }
         case 'UPDATE POST':

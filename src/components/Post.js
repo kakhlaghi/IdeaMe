@@ -14,12 +14,12 @@ class Post extends Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
+    /*componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
-        if (this.props.post.votes !== prevProps.post.votes) {
-          this.setState(this.state);
+        if (this.props.posts.votes !== prevProps.post.votes) {
+            this.props.votePost(this.state)
         }
-      }
+    }*/
 
     /*handleOnClick(event){
         this.setState({
@@ -30,15 +30,14 @@ class Post extends Component {
 
     addVotes = (event) => {
         event.preventDefault();
-        this.setState({
-            votes: this.state.votes + 1
-        })
-        this.props.votePost(this.state)
-        /*this.setState({
-            votes: 0
-        })*/
-    }
+        let newVotes = this.state.votes + 1
+        this.setState({ votes: newVotes}, () => this.props.votePost(this.state))
 
+    }
+        /*changeTitle: function (event) {
+            this.setState({ title: event.target.value }, () => this.APICallFunction());
+          }*/
+        
 
     render(){
     return (
@@ -51,7 +50,6 @@ class Post extends Component {
         )
     }
 } 
-
 
 const mapStateToProps = (state) => {
     return {

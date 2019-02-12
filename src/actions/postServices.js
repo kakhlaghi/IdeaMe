@@ -59,8 +59,8 @@ export function votePost(dispatches){
             body: JSON.stringify(vote)
         })
         .then(response => response.json())
-        .then(addVote =>{
-            dispatch({type: 'CHANGE VOTE', payload: [addVote]})
+        .then(newPost =>{
+            dispatch({type: 'CHANGE VOTE', payload: newPost})
         })
         .catch(error => console.log(error))
     }
