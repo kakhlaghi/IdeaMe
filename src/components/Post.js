@@ -49,9 +49,11 @@ class Post extends Component {
         <div className="tile" id={this.props.post.id} >
             <h4>{this.props.post.title}</h4>
             <p>{this.props.post.body}</p>
-            <button className="upvote" onClick={(event) => this.addVotes(event)}><img src='https://img.4plebs.org/boards/s4s/image/1385/00/1385006781269.png' alt='Upvote'/></button>
-            <button className="downvote" onClick={(event) => this.addVotes(event)}>Downvote</button>
-            <p>{this.props.post.votes}</p>
+            <div className="vote">
+                <button className="upvote" onClick={(event) => this.addVotes(event)}></button>
+                <p>{this.props.post.votes}</p>
+                <button className="downvote" onClick={(event) => this.addVotes(event)}></button>
+            </div>    
         </div>
         )
     }
