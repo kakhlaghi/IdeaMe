@@ -30,7 +30,12 @@ class Post extends Component {
 
     addVotes = (event) => {
         event.preventDefault();
-        let newVotes = this.state.votes + 1
+        let newVotes = 0
+        if(event.target.className == 'upvote'){
+            newVotes = this.state.votes + 1
+        } else {
+            newVotes = this.state.votes - 1
+        }    
         this.setState({ votes: newVotes}, () => this.props.votePost(this.state))
 
     }
@@ -44,7 +49,8 @@ class Post extends Component {
         <div className="tile" id={this.props.post.id} >
             <h4>{this.props.post.title}</h4>
             <p>{this.props.post.body}</p>
-            <button onClick={(event) => this.addVotes(event)}>Vote Up!</button>
+            <button className="upvote" onClick={(event) => this.addVotes(event)}><img src='https://img.4plebs.org/boards/s4s/image/1385/00/1385006781269.png' alt='Upvote'/></button>
+            <button className="downvote" onClick={(event) => this.addVotes(event)}>Downvote</button>
             <p>{this.props.post.votes}</p>
         </div>
         )
