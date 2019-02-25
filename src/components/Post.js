@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 //import PostForm from './PostForm'
 
-//class Post = ({post}) => {
+//const Post = ({post}) => {
 class Post extends Component {   
     constructor(props){
         super(props)
