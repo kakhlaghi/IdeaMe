@@ -3,7 +3,7 @@
 export function fetchPosts (dispatches) {
     return function(dispatch){
         dispatch({type: 'LOADING POSTS'})
-        fetch('http://ideameapi.herokuapp.com/api/v1/posts.json',
+        fetch('https://ideameapi.herokuapp.com/api/v1/posts.json',
         {
             method: 'GET'
         } )
@@ -23,7 +23,7 @@ export function addNewPost (dispatches){
                 body: dispatches.body
             }
         }
-        fetch('http://ideameapi.herokuapp.com/api/v1/posts',
+        fetch('https://ideameapi.herokuapp.com/api/v1/posts',
         {
             method: 'POST',
             mode: 'cors',
@@ -49,7 +49,7 @@ export function votePost(dispatches){
             }
         }
         //vote update
-        fetch(`http://ideameapi.herokuapp.com/api/v1/posts/${dispatches.id}`,{
+        fetch(`https://ideameapi.herokuapp.com/api/v1/posts/${dispatches.id}`,{
             method:'PUT',
             mode: 'cors',
             headers: {
@@ -73,7 +73,7 @@ export function updatePost(dispatches){
             body: this.state.body
         }
         //move to action (ALL FETCH REQUESTS)
-        fetch(`http://ideameapi.herokuapp.com/api/v1//${this.props.post.id}`,{
+        fetch(`https://ideameapi.herokuapp.com/api/v1/posts/${this.props.post.id}`,{
             method: 'PUT',
             mode: "cors",
             body: JSON.stringify({post: post})

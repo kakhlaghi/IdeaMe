@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import {addNewPost} from '../actions/postServices.js'
 import {connect} from 'react-redux'
 import { Redirect } from 'react-router-dom';

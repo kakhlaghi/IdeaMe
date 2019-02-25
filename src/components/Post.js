@@ -31,7 +31,7 @@ class Post extends Component {
     addVotes = (event) => {
         event.preventDefault();
         let newVotes = 0
-        if(event.target.className == 'upvote'){
+        if(event.target.className === 'upvote'){
             newVotes = this.state.votes + 1
         } else {
             newVotes = this.state.votes - 1
