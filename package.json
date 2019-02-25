@@ -2,7 +2,7 @@
   "name": "idea-me",
   "version": "0.1.0",
   "private": true,
-  "proxy": "ideameapi.herokuapp.com",
+  "proxy": "http://ideameapi.herokuapp.com",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
